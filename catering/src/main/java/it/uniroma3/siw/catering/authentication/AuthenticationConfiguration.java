@@ -16,12 +16,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import it.uniroma3.siw.catering.service.CustomOidcUserService;
+
 @Configuration
 @EnableWebSecurity
 public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	DataSource datasource;
+	
+	@Autowired
+    private CustomOidcUserService customOidcUserService;
 
 	/**
 	 * Provides the authorization and authentication configurations
@@ -29,25 +34,30 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests() // Authorization paragraph
+	http.authorizeRequests(t -> t // Authorization paragraph
 		.antMatchers(HttpMethod.GET, "/login", "/register", "/css/**", "/images/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
 		.antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 		.antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 		.anyRequest().authenticated()
-
-		.and().formLogin() // Login paragraph
-		.loginPage("/login")
-		.defaultSuccessUrl("/default", true)
-
-		.and().logout() // Logout paragraph
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/login?logout")
-		.invalidateHttpSession(true)
-		.deleteCookies("JSESSIONID")
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.clearAuthentication(true).permitAll();
-
+		)
+	
+	.formLogin(t -> t			// Login paragraph
+			.loginPage("/login")
+			.defaultSuccessUrl("/default", true))
+	
+	.oauth2Login(t -> t
+			.loginPage("/login")
+			.userInfoEndpoint().oidcUserService(customOidcUserService))
+	
+	.logout(t -> t				// Logout paragraph
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login?logout")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.clearAuthentication(true).permitAll());
+	
 	}
 
 	/**

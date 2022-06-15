@@ -23,13 +23,25 @@ public class User {
 	
 	@OneToOne
 	private Credentials credentials;
-
-	@Column(nullable = false)
-	@Size(min = 3, max = 30)
-	private String name;
-
-	@Column(nullable = false)
-	@Size(min = 3, max = 30)
-	private String surname;
 	
+	private String oAuthUniqueIdentifier;
+	
+	@Column(nullable = false)
+	@Size(min = 1, max = 30)
+	private String nome;
+
+	@Column(nullable = false)
+	@Size(min = 1, max = 30)
+	private String cognome;
+	
+	public User() {
+		
+	}
+	
+	public User(String oAuthUniqueIdentifier, String nome, String cognome,
+			boolean enabled) {
+		this.oAuthUniqueIdentifier = oAuthUniqueIdentifier;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
 }

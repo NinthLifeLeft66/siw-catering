@@ -55,33 +55,33 @@
 				</div>
 
 				<div class="form-outline mb-4">
-					<label for="input-name" class="form-label">Nome</label>
+					<label for="input-nome" class="form-label">Nome</label>
 					<div class="input-group mb-3">
 						<div class="input-group-append">
 							<span class="input-group-text"><i class="bi bi-person-lines-fill gold"></i></span>
 						</div>
-						<input type="text" th:field="${user.name}" class="form-control"
-							th:classappend="${#fields.hasErrors('user.name') ? 'is-invalid' : ''}"
-							id="input-name" />
+						<input type="text" th:field="${user.nome}" class="form-control"
+							th:classappend="${#fields.hasErrors('user.nome') ? 'is-invalid' : ''}"
+							id="input-nome" />
 						<div class="invalid-feedback">
-							<span th:if="${#fields.hasErrors('user.name')}"
-								th:errors="${user.name}"></span>
+							<span th:if="${#fields.hasErrors('user.nome')}"
+								th:errors="${user.nome}"></span>
 						</div>
 					</div>
 				</div>
 
 				<div class="form-outline mb-4">
-					<label for="input-surname" class="form-label">Cognome</label>
+					<label for="input-cognome" class="form-label">Cognome</label>
 					<div class="input-group mb-3">
 						<div class="input-group-append">
 							<span class="input-group-text"><i class="bi bi-person-lines-fill gold"></i></span>
 						</div>
-						<input type="text" th:field="${user.surname}" class="form-control"
-							th:classappend="${#fields.hasErrors('user.surname') ? 'is-invalid' : ''}"
-							id="input-surname" />
+						<input type="text" th:field="${user.cognome}" class="form-control"
+							th:classappend="${#fields.hasErrors('user.cognome') ? 'is-invalid' : ''}"
+							id="input-cognome" />
 						<div class="invalid-feedback">
-							<span th:if="${#fields.hasErrors('user.surname')}"
-								th:errors="${user.surname}"></span>
+							<span th:if="${#fields.hasErrors('user.cognome')}"
+								th:errors="${user.cognome}"></span>
 						</div>
 					</div>
 				</div>

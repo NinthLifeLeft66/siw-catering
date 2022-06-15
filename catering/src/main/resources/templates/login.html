@@ -7,9 +7,9 @@
 <main class="pt-5">
  
 		<div class="card w-50 mx-auto mt-5 text-center tertiary-color shadow">
-		<div class="card-body p-5 container-relative">	
+		<div class="card-body p-5 container-relative lato">	
 		
-		<div class="d-flex justify-content-center mt-5 mb-5">
+		<div class="d-flex justify-content-center my-5">
 		<div class="brand_logo_container">
 						<img th:src="@{/images/siwCatering.jpg}" class="brand_logo" alt="Logo">
 					</div>
@@ -50,13 +50,23 @@
 								</div>
 							</button>
 					</div>
-
+					
 				</form>
 				<div class="d-flex align-items-center justify-content-center pb-4">
 					<p class="mb-0 me-2">
 						Non hai ancora un account? <a th:href="@{/register}">Registrati</a>.</span>
 					</p>
 				</div>
+				<hr>
+				<div class="d-grid">
+						<a class="btn text-center pt-1 mb-5 pb-1 primary-color"
+							th:href="@{/oauth2/authorization/google}">
+							<i class="bi bi-google gold"></i> 
+							<span class="gold">
+								Accedi con Google
+							</span>
+						</a>
+					</div>
 				</div>
 
 
