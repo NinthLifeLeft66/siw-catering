@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="fragments/base.html :: headFragment(title='Registrati')"></head>
+
+<body>
+<img th:src="@{/images/sfondo.jpg}" class="bg-img">
+
+	<main class="pt-5 pb-5">
+
+	<div class="card w-50 mx-auto mt-5 text-center tertiary-color">
+		<div class="card-body p-5">
+
+			<div class="d-flex justify-content-center mt-5 mb-5">
+				<div class="brand_logo_container">
+					<img th:src="@{/images/siwCatering.JPG}" class="brand_logo"
+						alt="Logo">
+				</div>
+			</div>
+
+			<form th:action="@{/register}" method="post">
+				<div class="form-outline mb-4">
+					<label for="input-username" class="form-label">Username</label>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="bi bi-person-fill gold"></i></span>
+						</div>
+						<input type="text" th:field="${credentials.username}"
+							class="form-control"
+							th:classappend="${#fields.hasErrors('credentials.username') ? 'is-invalid' : ''}"
+							id="input-username" />
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('credentials.username')}"
+								th:errors="${credentials.username}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-outline mb-4">
+					<label for="input-password" class="form-label">Password</label>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="bi bi-key-fill gold"></i></span>
+						</div>
+						<input type="password" th:field="${credentials.password}"
+							class="form-control"
+							th:classappend="${#fields.hasErrors('credentials.password') ? 'is-invalid' : ''}"
+							id="input-password" />
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('credentials.password')}"
+								th:errors="${credentials.password}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-outline mb-4">
+					<label for="input-name" class="form-label">Nome</label>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="bi bi-person-lines-fill gold"></i></span>
+						</div>
+						<input type="text" th:field="${user.name}" class="form-control"
+							th:classappend="${#fields.hasErrors('user.name') ? 'is-invalid' : ''}"
+							id="input-name" />
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('user.name')}"
+								th:errors="${user.name}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-outline mb-4">
+					<label for="input-surname" class="form-label">Cognome</label>
+					<div class="input-group mb-3">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="bi bi-person-lines-fill gold"></i></span>
+						</div>
+						<input type="text" th:field="${user.surname}" class="form-control"
+							th:classappend="${#fields.hasErrors('user.surname') ? 'is-invalid' : ''}"
+							id="input-surname" />
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('user.surname')}"
+								th:errors="${user.surname}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="d-grid text-center pt-1 mb-5 pb-1">
+					<button type="submit"
+						class="btn primary-color mb-3">
+							<div class="gold">
+								Registrati
+							</div>
+						</button>
+				</div>
+
+			</form>
+			<div class="d-flex align-items-center justify-content-center pb-4">
+				<div>
+					Hai gi&agrave; un account? <a th:href="@{/login}">Accedi</a>.
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
+	</main>
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+
+</body>
+
+</html>

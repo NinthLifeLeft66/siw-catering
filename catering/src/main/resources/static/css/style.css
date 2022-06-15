@@ -1,0 +1,139 @@
+:root {
+	--primary: #b64154;
+	--secondary: #2B2D42;
+	--tertiary: #FFFFFF;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.bg-color {
+	background-color: #3f3f47;
+}
+
+.bg-img {
+	top: 0;
+	left: 0;
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:center;
+	position: fixed; 
+	z-index: -1;
+}
+
+.decorative-img {
+
+		z-index: -1;
+}
+
+.decorative-img-top {
+	width: 60vh; 
+	height: 90vh; 
+	overflow: hidden;
+}
+
+.parallax-img1 {
+	background-image: url('/images/pancakes.jpg');
+	height: 100vh;
+	position: relative;
+    opacity: 0.9;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-img2 {
+	background-image: url('/images/spaghetti.jpg');
+	min-height: 100vh;
+	position: relative;
+    opacity: 0.9;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.siw-title {
+	font-size: 20vh;
+	font-family: 'Niconne', cursive;
+	position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.spy {
+	position: relative;
+}
+
+.primary-color {
+	background: var(--primary) !important;
+}
+
+.secondary-color {
+	background: var(--secondary) !important;
+}
+
+.tertiary-color {
+	background: var(--tertiary) !important;
+}
+
+.gradient-custom-gold {
+	/* fallback for old browsers */
+	background: #F7EF8A;
+	
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
+	
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
+}
+
+
+.gold {
+	background-image: linear-gradient(45deg, #D2AC47, #F7EF8A, #D2AC47);
+	background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+.input-group-text {
+	background: var(--primary) !important;
+	color: white !important;
+	border: 0 !important;
+	border-radius: 0.25rem 0 0 0.25rem !important;
+	height: 100%;
+}
+
+.brand_logo_container {
+	position: absolute;
+	height: 170px;
+	width: 170px;
+	top: -75px;
+	background: linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
+	padding: 10px;
+	text-align: center;
+}
+
+.brand_logo {
+	height: 150px;
+	width: 150px;
+}
+
+.form-control:focus {
+	border-color: #FF0000;
+	box-shadow: inset 0 1px 1px var(--primary), 0 0 8px var(--primary);
+}
+
+.btn:focus {
+	border-color: #FF0000;
+	box-shadow: inset 0 1px 1px var(--primary), 0 0 8px var(--primary);
+}

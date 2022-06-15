@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="fragments/base.html :: headFragment(title='Chef')"></head>
+
+<body class="bg-color">
+
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/admin}" class="text-white ml-5 ">
+					<i class="bi bi-house-fill"></i>
+				</a>
+				<a th:href="@{'/logout'}">
+					<i class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+
+	<section>
+		<div class="container">
+			<div class="my-3 p-3 tertiary-color rounded shadow-sm">
+				<h3 th:text="${chef.nome + ' ' + chef.cognome}"></h3>
+				<h6 class="pb-2 mb-0">Buffet proposti</h6>
+				<hr>
+				<div class="text-muted pt-3">
+
+					<ul class="list-group">
+						<div th:if="${#lists.isEmpty(chef.buffetProposti)}" class="pb-5">
+							Lo chef non ha ancora proposto buffet.</div>
+
+						<li th:each="buffet : ${chef.buffetProposti}"
+							class="list-group-item align-items-center tertiary-color">
+							<div class="d-flex justify-content-between">
+								<div>
+									<strong th:text="${buffet.nome + ', ' +  buffet.descrizione}"></strong>
+								</div>
+								<button type="button" class="btn primary-color mb-1"
+									data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									<i class="bi bi-border-width gold"></i>
+								</button>
+								
+								<div class="dropdown-menu">
+									<a class="dropdown-item " data-bs-toggle="collapse"
+										th:href="'#collapse' + ${buffet.id}" role="button"
+										aria-expanded="false">Visualizza piatti</a> <a
+										class="dropdown-item"
+										th:href="@{'/admin/buffet/' + ${buffet.id} + '/piatto/new'}"
+										sec:authorize="hasAuthority('ADMIN')">Aggiungi piatto</a>
+									<div class="dropdown-divider"
+										sec:authorize="hasAuthority('ADMIN')"></div>
+									<a class="dropdown-item"
+										th:href="@{'/admin/buffet/' + ${buffet.id} }"
+										sec:authorize="hasAuthority('ADMIN')">Rimuovi buffet</a>
+								</div>
+							</div>
+
+							<div th:id="'collapse' + ${buffet.id}"
+								class="panel-collapse collapse in">
+								<div th:if="${#lists.isEmpty(buffet.piatti)}" class="pb-5">Non
+									ci sono piatti per questo buffet.</div>
+								<ul class="list-group">
+									<li th:each="piatto : ${buffet.piatti}"
+										class="list-group-item d-flex justify-content-between align-items-center tertiary-color">
+										<div>
+											<div th:text="${piatto.nome + ', ' +  piatto.descrizione}"
+												class="pb-3"></div>
+										</div>
+										<div>
+											<button type="button" class="btn primary-color mr-3" data-bs-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												<span class="material-symbols-outlined gold">
+													restaurant</span>
+											</button>
+											<div class="dropdown-menu">
+												<a class="dropdown-item"
+													th:href="@{'/admin/buffet/' + ${buffet.id} + '/piatto/' + ${piatto.id} + '/ingrediente/new'}"
+													sec:authorize="hasAuthority('ADMIN')">Aggiungi ingrediente</a>
+												<div class="dropdown-divider"
+													sec:authorize="hasAuthority('ADMIN')"></div>
+
+												<ul class="list-group list-group-flush">
+													<li th:each="ingrediente : ${piatto.ingredienti}"
+														class="list-group-item list-group-item-action">
+														<div class="d-flex justify-content-around align-items-center">
+															<a class="dropdown-item" th:text="${ingrediente.nome}"
+																th:href="@{'/buffet/' + ${buffet.id} +'/ingrediente/' + ${ingrediente.id} }"></a>
+															<a th:href="@{'/admin/buffet/' + ${buffet.id} + '/piatto/' + ${piatto.id} + '/ingrediente/' + ${ingrediente.id} + '/rimuovi'}"
+																class="btn primary-color" sec:authorize="hasAuthority('ADMIN')">
+																<i class="bi bi-x gold"></i>
+															</a>
+														</div>
+													</li>
+												</ul>
+
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+
+
+						</li>
+						<hr>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<p>
+	</main>
+
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+</body>
+
+</html>

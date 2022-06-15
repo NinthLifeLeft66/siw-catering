@@ -1,5 +1,6 @@
 package it.uniroma3.siw.catering.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -35,4 +36,8 @@ public class Buffet {
 	
 	@ManyToMany
 	private Collection<Piatto> piatti;
+	
+	public Buffet() {
+		piatti= new ArrayList<>();
+	}
 }

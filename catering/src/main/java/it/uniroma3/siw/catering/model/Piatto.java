@@ -1,7 +1,9 @@
 package it.uniroma3.siw.catering.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +31,10 @@ public class Piatto {
 	@Size(min = 3, max = 30)
 	private String descrizione;
 	
-	@ManyToMany
-	private Collection<Ingrediente> ingrediente;
+	@ManyToMany(cascade = CascadeType.REMOVE)
+	private Collection<Ingrediente> ingredienti;
+	
+	public Piatto() {
+		ingredienti = new ArrayList<>();
+	}
 }

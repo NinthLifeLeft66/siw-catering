@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="fragments/base.html :: headFragment(title='Admin home')"></head>
+
+
+<body class="bg-color">
+
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/}" class="text-white ml-5 ">
+					<h6>User home <i class="bi bi-house-fill"></i></h6>
+				</a>
+				<a th:href="@{'/logout'}">
+					<i class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+	
+	<div class="container">
+		<div
+			class="d-flex align-items-center p-3 my-3 primary-color rounded shadow">
+			<div class="lh-1 gold">
+				<h4 th:text="${username}" class="h4 mb-0 lh-1"></h4>
+				<small>Admin home</small>
+			</div>
+		</div>
+	</div>
+
+
+		<section>
+			<div class="container">
+				<div class="my-3 p-3 tertiary-color rounded shadow-sm">
+					<h6 class="pb-2 mb-0">Chef</h6>
+					<hr>
+					<a th:href="@{/admin/chef/new}" class="btn primary-color">
+						<div class="gold">Regista chef</div>
+					</a>
+
+					<div class="text-muted pt-3 ">
+
+						<ul class="list-group">
+							<li th:each="chef : ${elencoChef}"
+								class="list-group-item d-flex justify-content-between align-items-center tertiary-color">
+								<div>
+									<strong th:text="${chef.nome + ', ' + chef.cognome}"></strong>
+								</div>
+								<button type="button" class="btn primary-color"
+									data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									
+									<i class="bi bi-border-width gold"></i>
+								</button>
+								<div class="dropdown-menu">
+									
+									<a class="dropdown-item" th:href="@{'/chef/' + ${chef.id}}">Visualizza profilo</a>
+									<a class="dropdown-item" th:href="@{'/admin/chef/' + ${chef.id} + '/buffet/new'}">Crea buffet</a>
+									
+									<div class="dropdown-divider"></div>
+									
+									<a class="dropdown-item" th:href="@{'/admin/chef/' + ${chef.id} + '/rimuovi'}">Rimuovi chef</a>
+
+								</div>
+							</li>
+							<hr>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+	</main>
+	
+
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+	
+</body>
+
+</html>

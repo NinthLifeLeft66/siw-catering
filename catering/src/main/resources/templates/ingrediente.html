@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="fragments/base.html :: headFragment(title='Ingrediente')"></head>
+
+
+<body class="bg-color">
+
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/admin}" class="text-white ml-5 "> <i
+					class="bi bi-house-fill"></i>
+				</a>
+				</a> <a th:href="@{'/logout'}"> <i
+					class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+
+	<div class="card w-50 mx-auto mt-5 text-center">
+		<div class="card-header" th:text="${buffet.nome}"></div>
+		<div class="card-body">
+			<h3 class="card-title" th:text="${ingrediente.nome}"></h3>
+			Origine
+			<p class="card-text" th:text="${ingrediente.origine}"></p>
+			<h5 class="font-weight-light" th:text="${ingrediente.descrizione}"></h5>
+			<div class="d-grid">
+				<a th:href="@{'/admin/ingrediente/' + ${ingredienteId} + '/aggiorna'}" class="btn primary-color" sec:authorize="hasAuthority('ADMIN')">
+					<div class="gold">Modifica dati</div>
+				</a>
+			</div>
+			
+		</div>
+		<a class="card-footer text-muted"
+			th:href="@{'/chef/' + ${buffet.chef.id}}">Ritorna allo chef</a>
+	</div>
+
+	</main>
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+		
+		<head th:replace="fragments/base.html :: headFragment(title='Buffet')"></head>
+		
+	<body>
+	
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/admin}" class="text-white ml-5 "> <i
+					class="bi bi-house-fill"></i>
+				</a>
+				<a th:href="@{'/logout'}">
+					<i class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+		<main>
+			<h1 th:text="${buffet.nome}"></h1>
+
+			<section>
+				<h4>Piatti</h4>
+				<ul>
+					<li th:each="piatto : ${buffet.piatti}">
+						<span th:text="${piatto.nome + ', ' + piatto.descrizione}"></span>
+						<h5>Ingredienti</h5>
+							<div>
+								<ul>
+									<li th:each="ingrediente : ${piatto.ingredienti}">
+									 <div th:text="${piatto.ingrediente.nome + ', ' + piatto.ingrediente.origine + ', ' + piatto.ingrediente.descrizione}"></div>
+									</li>
+								</ul>
+							</div>
+					</li>
+				</ul>
+			</section>
+			
+			
+		</main>
+		
+			<h3>
+				Ritorna alla 
+				<a th:href="@{/}">home</a>
+			</h3>
+			
+	</body>
+
+</html>
