@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="fragments/base.html :: headFragment(title='Ingrediente')"></head>
+
+
+<body class="bg-color">
+
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/}" class="text-white ml-5 ">
+					<h6>User home <i class="bi bi-house-fill"></i></h6>
+				</a>
+				<a th:href="@{'/logout'}">
+					<i class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+
+	<div class="card w-50 mx-auto mt-5 text-center">
+		<h2 class="card-header gold niconne">Chef</h2>
+		<div class="card-body">
+			<h3 class="card-title niconne gold" th:text="${chef.nome} + ' ' + ${chef.cognome}"></h3>
+			Origine
+			<p class="card-text lato" th:text="${chef.nazionalita}"></p>
+			<div class="d-grid">
+				<a th:href="@{'/admin/chef/' + ${chefId} + '/profilo/aggiorna'}" class="btn primary-color" sec:authorize="hasAuthority('ADMIN')">
+					<div class="gold">Modifica dati</div>
+				</a>
+			</div>
+			
+		</div>
+		<div class="card-footer">
+			<a class="text-muted"
+				th:href="@{'/chef/' + ${chef.id}}" sec:authorize="hasAuthority('ADMIN')">Ritorna allo chef</a>
+			<a class="text-muted"
+				th:href="@{'/'}" sec:authorize="hasAuthority('DEFAULT')">Ritorna allo chef</a>
+		</div>
+	</div>
+
+	</main>
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+
+</body>
+</html>

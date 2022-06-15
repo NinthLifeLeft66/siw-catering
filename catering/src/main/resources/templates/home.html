@@ -1,74 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-  body {
-      position: relative; 
-  }
-  </style>
-</head>
+<head th:replace="fragments/base.html :: headFragment(title='Home')"></head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+<body onLoad="window.scroll(0, 56)">
 	
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#section1">Section 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section2">Section 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section3">Section 3</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div id="section1" class="container-fluid bg-success text-white" style="padding:100px 20px;">
-  <h1>Section 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-
-<div id="section2" class="container-fluid bg-warning" style="padding:100px 20px;">
-  <h1>Section 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-
-<div id="section3" class="container-fluid bg-secondary text-white" style="padding:100px 20px;">
-  <h1>Section 3</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-	
-	<!-- <header>
-		<div class="container primary-color shadow-sm rounded">
-			<div
-				class="d-flex justify-content-between align-items-center w-100 p-3">
-				<a th:href="@{/admin}" class="gold ml-5 " sec:authorize="hasAuthority('ADMIN')">
-					<h6>Admin home <i class="bi bi-house-fill"></i></h6>
-				</a>
-				<div class="gold"sec:authorize="hasAuthority('DEFAULT')">
-					<h4 th:text="${username}" class="h4 mb-0 lh-1"></h4>
-					<small>Home</small>
-				</div>
-				<a th:href="@{'/logout'}">
-					<i class="bi bi-door-open-fill gold"></i>
-				</a>
-			</div>
+<header>
+	<div class="container-fluid primary-color shadow-sm">
+	<div class="d-flex justify-content-between align-items-center w-100 p-3">
+		<a th:href="@{/admin}" class="gold ml-5 " sec:authorize="hasAuthority('ADMIN')">
+			<h5 class="h5 mb-0 lh-1">Admin home <i class="bi bi-house-fill"></i></h5>
+		</a>
+		<div class="gold"sec:authorize="hasAuthority('DEFAULT')">
+			<h5 th:text="${username}" class="h5 mb-0 lh-1"></h5>
 		</div>
-	</header>
-	-->
-	
+		<a th:href="@{'/logout'}">
+			<i class="bi bi-door-open-fill gold"></i>
+		</a>
+	</div>
+	</div>
+</header>
+
 	<main>
 		<div>
 			<img class="decorative-img parallax-img1 w-100 p-2">
@@ -77,27 +29,36 @@
 			<p class="text-center">
 				Siw Catering
 			</p>
+			<div class="scroll-text text-center divider ">
+				<div class="text-divider">
+					<span class="gold niconne">
+						scorri in basso
+					</span>
+				</div>
+			</div>
 		</div>
 		
 		<section>
+		
 			<div class="d-flex justify-content-around p-5">
-			 <div class="decorative-img-top mt-5">
-				<img th:src="@{'/images/buffet1.jpg'}" >
+			 <div class="decorative-img-top m-5">
+				<img th:src="@{'/images/buffet.jpg'}" >
 				</div>
-				<div class="mt-5">  
-					<h1 class="text-center">I nostri buffet</h1>
+				<div class="my-5">  
+					<h1 class="text-center niconne">I nostri buffet</h1>
 					<hr>
-					<p class="text-center">
-						I nostri chef pluristellati ti accompagneranno<br>
-						attraverso un un viaggio che risveglier&agrave le tue papille gustative.<br><br>
-						
+					<p class="text-center lato">
 						Lasciati trasportare dai nostri buffet:<br>
 						avvolgenti aromi, intensi sapori ed emozioni uniche<br>
 						ti aspettano.<br>
 					</p>
-					
-					
-					
+					<div class="divider">
+					  <a href="#buffet-section" class="text-divider text-decoration-none">
+					    <span class="gold niconne">
+					  	  Scopri i buffet
+					  	</span>
+					  </a>
+					</div>
 				</div>
 			</div>
 			
@@ -105,34 +66,143 @@
 		
 			<div class="decorative-img parallax-img2 w-100 p-2">
 			</div>
-		<section>
+		
+<!-- ===================================Sezione buffet=================================== -->
+		<section id="buffet-section" class="p-5">
+			<div class="h-75">
 			<div class="container">
 				<div class="my-3 p-3 bg-white rounded shadow-sm">
-					<h6 class="pb-2 mb-0">Chef</h6>
+					<h2 class="pb-2 mb-0 gold niconne">Buffet</h2>
 					<hr>
-					<div class="d-flex text-muted pt-3">
+					<div class="text-muted pt-3">
 
-						<ul class="w-100">
-							<li th:each="chef : ${elencoChef}">
-								<div class="pb-3 mb-0 lh-sm row">
-									<div class="col">
-										<a th:text="${chef.nome + ', ' + chef.cognome}"
-											class="text-gray-dark"></a>
-									</div>
-									<div class="col">
-										<div class="btn-group float-right">
-											<button type="button" class="btn btn-primary dropdown-toggle"
-												data-toggle="dropdown" aria-haspopup="true"
-												aria-expanded="false">
-												<i class="bi bi-border-width"></i>
-											</button>
+						<ul class="list-group list-group-flush">
+							<div th:if="${#lists.isEmpty(elencoBuffet)}" class="pb-5">
+								Ancora non sono stati proposti buffet.
+							</div>
+
+						<li th:each="buffet : ${elencoBuffet}"
+							class="list-group-item align-items-center tertiary-color">
+							<div class="d-flex justify-content-between">
+								<div>
+									<div th:text="${buffet.nome + ', ' +  buffet.descrizione}" class="lato"></div>
+								</div>
+								<button type="button" class="btn primary-color mb-1"
+									data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									<i class="bi bi-border-width gold"></i>
+								</button>
+								
+								<div class="dropdown-menu">
+									<a class="dropdown-item " data-bs-toggle="collapse"
+										th:href="'#collapse' + ${buffet.id}" role="button"
+										aria-expanded="false">Visualizza piatti</a>
+								</div>
+							</div>
+
+							<div th:id="'collapse' + ${buffet.id}"
+								class="panel-collapse collapse in">
+								<div th:if="${#lists.isEmpty(buffet.piatti)}" class="pb-5">Non
+									ci sono piatti per questo buffet.</div>
+								<ul class="list-group list-group-flush">
+									<li th:each="piatto : ${buffet.piatti}"
+										class="list-group-item d-flex justify-content-between align-items-center tertiary-color">
+										<div>
+											<div th:text="${piatto.nome + ', ' +  piatto.descrizione}"
+												class="pb-3 lato"></div>
+										</div>
+										<div>
+											<button type="button" class="btn primary-color mr-3" data-bs-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												<span class="material-symbols-outlined gold">
+													restaurant</span>
 											</button>
 											<div class="dropdown-menu">
-												<a class="dropdown-item" th:href="@{'/chef/' + ${chef.id}}">Visualizza
-													profilo</a>
+
+												<ul class="list-group list-group-flush">
+													<div th:if="${#lists.isEmpty(piatto.ingredienti)}" class="pb-5">
+														Ancora non sono stati inseriti piatti.
+													</div>
+													<li th:each="ingrediente : ${piatto.ingredienti}"
+														class="list-group-item list-group-item-action">
+														<div class="d-flex justify-content-around align-items-center">
+															<a class="dropdown-item" th:text="${ingrediente.nome}"
+																th:href="@{'/buffet/' + ${buffet.id} +'/ingrediente/' + ${ingrediente.id} }"></a>
+														</div>
+													</li>
+												</ul>
+
 											</div>
 										</div>
-									</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<hr>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		</section>
+		
+		<div class="decorative-img parallax-img3 w-100 p-2"></div>
+		
+		<section>
+		
+			<div class="d-flex justify-content-around p-5">
+				<div class="my-5">  
+					<h1 class="text-center niconne">La nostra squadra</h1>
+					<hr>
+					<p class="text-center lato">
+						I nostri chef pluristellati ti accompagneranno<br>
+						attraverso un un viaggio che risveglier&agrave le tue papille gustative.<br><br>
+						
+						
+					</p>
+					<div class="divider">
+					  <a href="#chef-section" class="text-divider text-decoration-none">
+					    <span class="gold niconne">
+					  	  Conosci gli chef
+					  	</span>
+					  </a>
+					</div>
+				</div>
+				<div class="decorative-img-top m-5">
+					<img th:src="@{'/images/chef.jpg'}" >
+				</div>
+			</div>
+			
+		</section>
+		
+		<div class="decorative-img parallax-img4 w-100 p-2"></div>
+			
+<!-- ===================================Sezione chef=================================== -->
+		<section id="chef-section" class="p-5">
+			<div class="container">
+				<div class="my-3 p-3 tertiary-color rounded shadow-sm">
+					<h2 class="pb-2 mb-0 niconne gold">Chef</h2>
+					<hr>
+					
+					<div class="text-muted pt-3 ">
+
+						<ul class="list-group list-group-flush">
+							<li th:each="chef : ${elencoChef}"
+								class="list-group-item d-flex justify-content-between align-items-center tertiary-color">
+								<div>
+									<div th:text="${chef.nome + ' ' + chef.cognome}" class="lato"></div>
+								</div>
+								<button type="button" class="btn primary-color"
+									data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									
+									<i class="bi bi-border-width gold"></i>
+								</button>
+								<div class="dropdown-menu">
+									
+									<a class="dropdown-item" th:href="@{'/chef/' + ${chef.id} + '/profilo'}">Visualizza profilo</a>
+
 								</div>
 							</li>
 							<hr>
@@ -144,12 +214,73 @@
 			</div>
 		</section>
 		
+		<div class="decorative-img parallax-img5 w-100 p-2"></div>
+		
 		
 	</main>
+	
+<footer class="secondary-color text-center text-white">
+  <div class="container p-4">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
+    <section class="mb-4">
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+
+    <section>
+      <form>
+        <div class="row d-flex justify-content-center">
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Iscriviti alla newsletter!</strong>
+            </p>
+          </div>
+
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example21" class="form-control" />
+              <label class="form-label" for="form5Example21">Email</label>
+            </div>
+          </div>
+          
+          <div class="col-auto">
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+</div>
+
+  <div class="text-center p-3 bg-dark" >
+    2022 Copyright:
+    <span class="text-white">Parente Valerio</span>
+  </div>
+</footer>
 
 	<div th:replace="fragments/base.html :: scriptFragment"></div>
 

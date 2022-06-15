@@ -31,6 +31,28 @@ public class ChefController {
 		return "chef";
 	}
 	
+	@GetMapping("/chef/{chefId}/profilo")
+	public String getChefProfilo(@PathVariable("chefId") Long chefId,
+			Model model) {
+		
+		Chef chef = chefService.findById(chefId);
+
+		model.addAttribute("chef", chef);
+		
+		return "profilo-chef";
+	}
+	
+	@GetMapping("/admin/chef/{chefId}/profilo")
+	public String getAdminChefProfilo(@PathVariable("chefId") Long chefId,
+			Model model) {
+		
+		Chef chef = chefService.findById(chefId);
+
+		model.addAttribute("chef", chef);
+		
+		return "admin-profilo-chef";
+	}
+	
 	@GetMapping("/admin/chef/new")
 	public String getCreateChefView(Model model) {
 		
@@ -57,6 +79,28 @@ public class ChefController {
 		chefService.deleteById(chefId);
 		
 		return "redirect:/admin";
+		
+	}
+	
+	@GetMapping("/admin/chef/{chefId}/profilo/aggiorna")
+	public String getAggiornaChefProfiloView(@PathVariable("chefId") Long chefId,
+			Model model) {
+		
+		model.addAttribute("chef", chefService.findById(chefId));
+		
+		return "aggiorna-profilo-chef";
+	}
+	
+	@PostMapping("/admin/chef/{chefId}/profilo/aggiona")
+	public String aggiornaIngrediente(@Valid @ModelAttribute("chef") Chef chef, 
+			BindingResult ingredienteBindingResult) {
+		
+		if (!ingredienteBindingResult.hasErrors()) {
+			chefService.save(chef);
+			return "redirect:/admin";
+		}
+		
+		return "aggiorna-profilo-chef";
 		
 	}
 }

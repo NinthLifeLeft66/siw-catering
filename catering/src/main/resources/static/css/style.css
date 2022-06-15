@@ -1,3 +1,4 @@
+/* =======================Variabili colori======================= */
 :root {
 	--primary: #b64154;
 	--secondary: #2B2D42;
@@ -8,8 +9,10 @@ body, html {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	scroll-behavior: smooth;
 }
 
+/* =======================Immagini e sfondi======================= */
 .bg-color {
 	background-color: #3f3f47;
 }
@@ -25,8 +28,7 @@ body, html {
 }
 
 .decorative-img {
-
-		z-index: -1;
+	z-index: -1;
 }
 
 .decorative-img-top {
@@ -35,8 +37,7 @@ body, html {
 	overflow: hidden;
 }
 
-.parallax-img1 {
-	background-image: url('/images/pancakes.jpg');
+.parallax-img1, .parallax-img2, .parallax-img3, .parallax-img4, .parallax-img5 {
 	height: 100vh;
 	position: relative;
     opacity: 0.9;
@@ -45,33 +46,41 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.parallax-img1 {
+	background-image: url('/images/pancakes.jpg');
+}
 .parallax-img2 {
 	background-image: url('/images/spaghetti.jpg');
-	min-height: 100vh;
-	position: relative;
-    opacity: 0.9;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
-.siw-title {
-	font-size: 20vh;
-	font-family: 'Niconne', cursive;
+.parallax-img3 {
+	background-image: url('/images/pizza.jpg');
+}
+
+.parallax-img4 {
+	background-image: url('/images/verdure.jpg');
+}
+
+.parallax-img5 {
+	background-image: url('/images/tavolo.jpg');
+}
+
+.brand_logo_container {
 	position: absolute;
-    left: 0;
-    top: 30%;
-    width: 100%;
-    text-align: center;
-    color: white;
+	height: 170px;
+	width: 170px;
+	top: -75px;
+	background: linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
+	padding: 10px;
+	text-align: center;
 }
 
-.spy {
-	position: relative;
+.brand_logo {
+	height: 150px;
+	width: 150px;
 }
 
+/* =======================Colori======================= */
 .primary-color {
 	background: var(--primary) !important;
 }
@@ -95,6 +104,24 @@ body, html {
 	background: linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
 }
 
+/* =======================Testi======================= */
+.siw-title {
+	font-size: 20vh;
+	font-family: 'Niconne', cursive;
+	position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.niconne {
+	font-family: 'Niconne', cursive;
+}
+
+.lato {
+	font-family: 'Lato', sans-serif;
+}
 
 .gold {
 	background-image: linear-gradient(45deg, #D2AC47, #F7EF8A, #D2AC47);
@@ -105,6 +132,41 @@ body, html {
     -moz-text-fill-color: transparent;
 }
 
+.divider {
+	 width: 100%;
+	 height: 30px;
+	 border-bottom: 1px solid black;
+	 text-align: center;
+}
+
+.scroll-text {
+  position: relative;
+  animation-name: appear;
+  opacity: 0;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+  animation-duration: 4s;  
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from {top: 200px;}
+  to {top: 0px; opacity:1;}
+}
+
+.text-divider {
+	 font-size: 40px;
+	 padding: 0 10px;
+	 background-color: white;
+}
+
+
+/* =======================Bottoni e form======================= */
+.btn:focus {
+	border-color: #FF0000;
+	box-shadow: inset 0 1px 1px var(--primary), 0 0 8px var(--primary);
+}
+
 .input-group-text {
 	background: var(--primary) !important;
 	color: white !important;
@@ -113,27 +175,13 @@ body, html {
 	height: 100%;
 }
 
-.brand_logo_container {
-	position: absolute;
-	height: 170px;
-	width: 170px;
-	top: -75px;
-	background: linear-gradient(to right, #D2AC47, #F7EF8A, #D2AC47);
-	padding: 10px;
-	text-align: center;
-}
-
-.brand_logo {
-	height: 150px;
-	width: 150px;
-}
-
 .form-control:focus {
 	border-color: #FF0000;
 	box-shadow: inset 0 1px 1px var(--primary), 0 0 8px var(--primary);
 }
 
-.btn:focus {
-	border-color: #FF0000;
-	box-shadow: inset 0 1px 1px var(--primary), 0 0 8px var(--primary);
+.dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
+  color: white !important;
+  background-color: var(--primary) !important;
+  border-color: gold !important;
 }

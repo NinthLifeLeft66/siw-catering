@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
 import it.uniroma3.siw.catering.model.Credentials;
+import it.uniroma3.siw.catering.service.BuffetService;
 import it.uniroma3.siw.catering.service.ChefService;
 import it.uniroma3.siw.catering.service.CredentialsService;
 
@@ -23,13 +25,18 @@ public class MainController {
 	@Autowired
 	private ChefService chefService;
 	
+	@Autowired
+	private BuffetService buffetService;
+	
 	@GetMapping("/")
 	public String home(Model model) {
 		
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.findByUsername(userDetails.getUsername());
+		Collection<Buffet> elencoBuffet = buffetService.findAll();
 		Collection<Chef> elencoChef = chefService.findAll();
 		
+		model.addAttribute("elencoBuffet", elencoBuffet);
 		model.addAttribute("elencoChef", elencoChef);		
 		model.addAttribute("username", credentials.getUsername());
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="fragments/base.html :: headFragment(title='Modifica chef')"></head>
+
+<body class="bg-color">
+	
+	<header>
+		<div class="container secondary-color shadow-sm rounded">
+			<div
+				class="d-flex justify-content-between align-items-center w-100 p-3">
+				<a th:href="@{/admin}" class="text-white ml-5 "> <i
+					class="bi bi-house-fill"></i>
+				</a>
+				<a th:href="@{'/logout'}">
+					<i class="bi bi-door-open-fill text-white"></i>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+	<div class="card w-50 mx-auto mt-5 text-center">
+		<h2 class="card-header gold niconne">Modifica il profilo di uno chef</h2>
+		<div class="card-body p-5 lato">
+
+			<form th:action="@{'/admin/chef/' + ${chefId} + '/profilo/aggiona'}"
+				method="POST" th:object="${chef}">
+
+				<div class="form-group row">
+					<label for="nomeInput" class="col-form-label">Nome
+						dello chef</label>
+					<div class="col mb-4">
+						<input type="text" th:field="*{nome}" class="form-control"
+							th:classappend="*{#fields.hasErrors('nome') ? 'is-invalid' : ''}"
+							id="nomeInput">
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="cognomeInput" class="col-form-label">Cognome
+						dello chef</label>
+					<div class="col mb-4">
+						<input type="text" th:field="*{cognome}" class="form-control"
+							th:classappend="*{#fields.hasErrors('cognome') ? 'is-invalid' : ''}"
+							id="cognomeInput">
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="nazionalitaInput" class="col-form-label">Nazionalit&agrave</label>
+					<div class="col mb-4">
+						<input type="text" th:field="*{nazionalita}" class="form-control"
+							th:classappend="*{#fields.hasErrors('nazionalita') ? 'is-invalid' : ''}"
+							id="nazionalitaInput">
+						<div class="invalid-feedback">
+							<span th:if="${#fields.hasErrors('nazionalita')}"
+								th:errors="*{nazionalita}"></span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<button type="submit" class="btn primary-color">
+						<div class="gold">Modifica</div>
+					</button>
+				</div>
+
+				<input type="hidden" th:field="*{id}" />
+
+			</form>
+		</div>
+
+		<a class="card-footer text-muted" th:href="@{'/admin'}">Annulla</a>
+
+	</div>
+
+	</main>
+	<div th:replace="fragments/base.html :: scriptFragment"></div>
+
+</body>
+
+</html>
