@@ -70,6 +70,20 @@ public class IngredienteController {
 		return "crea-ingrediente";
 	}
 	
+	@GetMapping("/admin/buffet/{buffetId}/ingrediente/{ingredienteId}")
+	public String geAdmintIngredienteView(@PathVariable("buffetId") Long buffetId,
+			@PathVariable("ingredienteId") Long ingredienteId, 
+			Model model) {
+		
+		Ingrediente ingrediente = ingredienteService.findById(ingredienteId);
+		Buffet buffet = buffetService.findById(buffetId);
+		
+		model.addAttribute("ingrediente", ingrediente);
+		model.addAttribute("buffet", buffet);
+		
+		return "admin-ingrediente";
+	}
+	
 	@GetMapping("/buffet/{buffetId}/ingrediente/{ingredienteId}")
 	public String getIngredienteView(@PathVariable("buffetId") Long buffetId,
 			@PathVariable("ingredienteId") Long ingredienteId, 

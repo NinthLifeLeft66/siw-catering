@@ -7,7 +7,7 @@
 
 <body>
 
-	<header>
+<header>
 	<div class="container-fluid primary-color shadow-sm">
 	<div class="d-flex justify-content-between align-items-center w-100 p-3">
 		<a th:href="@{'/admin'}" class="gold ml-5 " sec:authorize="hasAuthority('ADMIN')">
@@ -40,9 +40,7 @@
 		</div>
 		<div class="card-footer">
 			<a class="text-muted"
-				th:href="@{'/chef/' + ${chef.id}}" sec:authorize="hasAuthority('ADMIN')">Ritorna allo chef</a>
-			<a class="text-muted"
-				th:href="@{'/'}" sec:authorize="hasAuthority('DEFAULT')">Ritorna allo chef</a>
+				th:href="@{'/'}">Ritorna alla home</a>
 		</div>
 	</div>
 

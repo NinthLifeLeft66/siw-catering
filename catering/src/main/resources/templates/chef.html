@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head th:replace="fragments/base.html :: headFragment(title='Chef')"></head>
+<head th:replace="fragments/base.html :: headFragment(title='Buffet proposti')"></head>
 
-<body class="bg-color">
+<body class="bg-color lato">
 
 	<header>
 		<div class="container secondary-color shadow-sm rounded">
@@ -89,7 +89,7 @@
 														class="list-group-item list-group-item-action">
 														<div class="d-flex justify-content-around align-items-center">
 															<a class="dropdown-item" th:text="${ingrediente.nome}"
-																th:href="@{'/buffet/' + ${buffet.id} +'/ingrediente/' + ${ingrediente.id} }"></a>
+																th:href="@{'/admin/buffet/' + ${buffet.id} +'/ingrediente/' + ${ingrediente.id} }"></a>
 															<a th:href="@{'/admin/buffet/' + ${buffet.id} + '/piatto/' + ${piatto.id} + '/ingrediente/' + ${ingrediente.id} + '/rimuovi'}"
 																class="btn primary-color" sec:authorize="hasAuthority('ADMIN')">
 																<i class="bi bi-x gold"></i>

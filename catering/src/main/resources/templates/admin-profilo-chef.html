@@ -2,7 +2,7 @@
 <html>
 
 <head
-	th:replace="fragments/base.html :: headFragment(title='Ingrediente')"></head>
+	th:replace="fragments/base.html :: headFragment(title='Profilo chef')"></head>
 
 
 <body class="bg-color">
@@ -11,8 +11,8 @@
 		<div class="container secondary-color shadow-sm rounded">
 			<div
 				class="d-flex justify-content-between align-items-center w-100 p-3">
-				<a th:href="@{/}" class="text-white ml-5 ">
-					<h6>User home <i class="bi bi-house-fill"></i></h6>
+				<a th:href="@{/admin}" class="text-white ml-5 ">
+					<h6><i class="bi bi-house-fill"></i></h6>
 				</a>
 				<a th:href="@{'/logout'}">
 					<i class="bi bi-door-open-fill text-white"></i>
@@ -38,9 +38,7 @@
 		</div>
 		<div class="card-footer">
 			<a class="text-muted"
-				th:href="@{'/chef/' + ${chef.id}}" sec:authorize="hasAuthority('ADMIN')">Ritorna allo chef</a>
-			<a class="text-muted"
-				th:href="@{'/'}" sec:authorize="hasAuthority('DEFAULT')">Ritorna allo chef</a>
+				th:href="@{'/chef/' + ${chef.id}}" sec:authorize="hasAuthority('ADMIN')">Vai ai buffet proposti</a>
 		</div>
 	</div>
 
